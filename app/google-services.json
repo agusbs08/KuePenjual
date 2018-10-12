@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "1013683540916",
+    "firebase_url": "https://bikinkue-e59a5.firebaseio.com",
+    "project_id": "bikinkue-e59a5",
+    "storage_bucket": "bikinkue-e59a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013683540916:android:33b062b5614835c0",
+        "android_client_info": {
+          "package_name": "com.marketplace.kelompok2.kue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013683540916-1artlh7qr9abpi0gcslqg7q8dm972ikq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketplace.kelompok2.kue",
+            "certificate_hash": "4d7f1a99baca3cb53029e8b76385cc02a050b5f2"
+          }
+        },
+        {
+          "client_id": "1013683540916-du8j9rv2g8jhh28hsda3db925tol84bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketplace.kelompok2.kue",
+            "certificate_hash": "d4fc3ec47911d3b133269d3c6b6269b86100dc37"
+          }
+        },
+        {
+          "client_id": "1013683540916-bi9j3613f8qu397vg5f7sut3hu7i9ecl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketplace.kelompok2.kue",
+            "certificate_hash": "2d1e2019af72794d1163911e11028bc206312c71"
+          }
+        },
+        {
+          "client_id": "1013683540916-beru4mf5e0jkkk4fsmmkbdiqd24apih4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketplace.kelompok2.kue",
+            "certificate_hash": "f825e5eff2a415d0e2fc56a13468055f3b7bcf42"
+          }
+        },
+        {
+          "client_id": "1013683540916-ip9gt4utimvf3g20al1fffpici62jq6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh_iwcv2uxae-0xu-YQhJkLh_han2dS7o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013683540916-ip9gt4utimvf3g20al1fffpici62jq6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013683540916:android:9c24142953376a69",
+        "android_client_info": {
+          "package_name": "kelompok2.marketplace.com.kuepenjual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013683540916-e1oidst7idkjabt24ob1d4k61q9i0mqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kelompok2.marketplace.com.kuepenjual",
+            "certificate_hash": "f825e5eff2a415d0e2fc56a13468055f3b7bcf42"
+          }
+        },
+        {
+          "client_id": "1013683540916-ip9gt4utimvf3g20al1fffpici62jq6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh_iwcv2uxae-0xu-YQhJkLh_han2dS7o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013683540916-ip9gt4utimvf3g20al1fffpici62jq6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
