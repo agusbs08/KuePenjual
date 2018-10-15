@@ -1,4 +1,4 @@
-package kelompok2.marketplace.com.kuepenjual.ui.base;
+package kelompok2.marketplace.com.kuepenjual.base;
 
 import kelompok2.marketplace.com.kuepenjual.db.retrofit.DataService;
 import kelompok2.marketplace.com.kuepenjual.db.retrofit.RetrofitInstanceClient;

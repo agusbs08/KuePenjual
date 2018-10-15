@@ -1,4 +1,4 @@
-package kelompok2.marketplace.com.kuepenjual.ui.base;
+package kelompok2.marketplace.com.kuepenjual.base;
 
 public interface BaseView {
     void showLoading();
