@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.common.UserState;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
-import kelompok2.marketplace.com.kuepenjual.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
