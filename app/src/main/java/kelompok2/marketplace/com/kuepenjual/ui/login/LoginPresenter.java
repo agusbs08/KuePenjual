@@ -13,11 +13,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginPresenter {
+import kelompok2.marketplace.com.kuepenjual.base.BasePresenterNetwork;
+import kelompok2.marketplace.com.kuepenjual.common.UserState;
+import kelompok2.marketplace.com.kuepenjual.model.Penjual;
+import kelompok2.marketplace.com.kuepenjual.model.response.ModelResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class LoginPresenter extends BasePresenterNetwork{
     private LoginView view;
     private FirebaseAuth mAuth;
     private AppCompatActivity activity;
-   // private Call<ModelResponse<Pembeli>> result;
+    private Call<ModelResponse<Penjual>> result;
 
     public LoginPresenter(LoginView view, FirebaseAuth mAuth, AppCompatActivity activity){
         super();
@@ -44,5 +52,26 @@ public class LoginPresenter {
                     }
                 });
     }
+
+    public void checkUser(String email, String password){
+        result = service.getUser(email, password);
+
+        result.enqueue(new Callback<ModelResponse<Penjual>>() {
+            @Override
+            public void onResponse(Call<ModelResponse<Penjual>> call, Response<ModelResponse<Penjual>> response) {
+                view.actionLoginSuccess(response.body().getModel().getId());
+            }
+
+            @Override
+            public void onFailure(Call<ModelResponse<Penjual>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void checkUserFromEmail(String email){
+
+    }
+
 
 }

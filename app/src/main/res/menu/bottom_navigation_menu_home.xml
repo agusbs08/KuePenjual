@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_beranda"
+        android:title="Beranda"
+    />
+
+    <item
+        android:id="@+id/menu_statistik"
+        android:title="Beranda"
+        />
+
+    <item
+        android:id="@+id/menu_tambah_barang"
+        android:title="Beranda"
+        />
+
+    <item
+        android:id="@+id/menu_notif"
+        android:title="Beranda"
+        />
+
+    <item
+        android:id="@+id/menu_profil"
+        android:title="Beranda"
+        />
+
+</menu>

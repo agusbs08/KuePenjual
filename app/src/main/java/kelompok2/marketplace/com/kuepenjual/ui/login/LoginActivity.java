@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import kelompok2.marketplace.com.kuepenjual.R;
+import kelompok2.marketplace.com.kuepenjual.common.UserState;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 import kelompok2.marketplace.com.kuepenjual.ui.register.RegisterActivity;
 
@@ -57,6 +58,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         presenter = new LoginPresenter(this, FirebaseAuth.getInstance(), this);
+        etUsername = findViewById(R.id.et_email_login);
+        etPassword = findViewById(R.id.et_password_login);
+        tes = findViewById(R.id.tes);
+        tes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.checkUser(etUsername.getText().toString(), etPassword.getText().toString());
+            }
+        });
     }
 
     private boolean checkEmail(String email){
@@ -83,12 +93,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void updateUI(FirebaseUser user){
         Toast.makeText(this,user.getEmail().toString(), Toast.LENGTH_SHORT).show();
-//        if(user != null){
-//           // presenter.checkUserFromEmail(user.getEmail());
-//        }
-//        else{
-//            showError();
-//        }
+        if(user != null){
+           presenter.checkUserFromEmail(user.getEmail());
+        }
+        else{
+            showError();
+        }
     }
     @Override
     public void showError(){
@@ -97,20 +107,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void actionLoginSuccess(Integer id) {
+        UserState.getInstance().setIdUser(id);
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.putExtra("idUser", id);
         startActivity(intent);
         finish();
     }
-//
-//    @Override
-//    public void showLoading() {
-//
-//        //pb.setVisibility(View.VISIBLE);
-//    }
-//
-//    @Override
-//    public void hideLoading() {
-//       // pb.setVisibility(View.INVISIBLE);
-//    }
+
+    @Override
+    public void showLoading() {
+        pb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        pb.setVisibility(View.INVISIBLE);
+    }
 }
