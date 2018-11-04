@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="abu">#848484</color>
+    <color name="lightabu">#e4e4e4</color>
+    <color name="biru">#068BCF</color>
 </resources>
