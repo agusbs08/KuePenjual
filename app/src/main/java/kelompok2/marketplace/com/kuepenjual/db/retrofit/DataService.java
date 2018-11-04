@@ -42,7 +42,7 @@ public interface DataService {
 
     @FormUrlEncoded
     @POST("api/penjual")
-    public Call<ModelResponse<Penjual>> registerPembeli(@Field("username_pen") String username,
+    public Call<ModelResponse<Penjual>> registerPenjual(@Field("username_pen") String username,
                                                         @Field("password_pen") String password,
                                                         @Field("email_pen") String email,
                                                         @Field("notlp_pen") String noHp);

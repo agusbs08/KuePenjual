@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class BerandaFragment extends Fragment implements BerandaView{
     private List<PenjualanBarangList> listBarang = new ArrayList<>();
     private BerandaPresenter presenter;
 
+    private EditText etSearch;
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -35,15 +38,26 @@ public class BerandaFragment extends Fragment implements BerandaView{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_beranda, container, false);
         initView(rootView);
+        initActionSearch();
         return rootView;
     }
 
     private void initView(View rootView){
+        etSearch = rootView.findViewById(R.id.et_search_beranda);
         adapter = new BerandaRecyclerViewAdapter(listBarang, getContext());
         recyclerView = rootView.findViewById(R.id.rv_barang_beranda);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         presenter = new BerandaPresenter(this);
+    }
+
+    private void initActionSearch(){
+        etSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
