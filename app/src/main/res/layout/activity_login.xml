@@ -25,8 +25,8 @@
         android:background="@drawable/rounded_field"
         android:elevation="10dp"
         android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:padding="10dp"
         android:singleLine="false"
         android:textSize="15sp"
@@ -110,4 +110,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_login" />
 
+    <TextView
+        android:id="@+id/tv_daftar_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Daftar"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:textSize="18sp"/>
 </android.support.constraint.ConstraintLayout>
