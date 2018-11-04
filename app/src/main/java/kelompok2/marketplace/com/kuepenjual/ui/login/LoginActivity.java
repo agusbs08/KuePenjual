@@ -60,13 +60,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         presenter = new LoginPresenter(this, FirebaseAuth.getInstance(), this);
         etUsername = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
-        tes = findViewById(R.id.tes);
-        tes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.checkUser(etUsername.getText().toString(), etPassword.getText().toString());
-            }
-        });
     }
 
     private boolean checkEmail(String email){
