@@ -2,7 +2,9 @@ package kelompok2.marketplace.com.kuepenjual.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Barang {
+import java.io.Serializable;
+
+public class Barang implements Serializable{
     @SerializedName("id_barang")
     private Integer id;
 
@@ -32,6 +34,7 @@ public class Barang {
 
     @SerializedName("harga_barang")
     private Float harga;
+
 
 
     public Barang(){
@@ -117,4 +120,5 @@ public class Barang {
     public void setRating(Float rating) {
         this.rating = rating;
     }
+
 }

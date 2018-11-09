@@ -43,12 +43,12 @@ public class BerandaFragment extends Fragment implements BerandaView{
     }
 
     private void initView(View rootView){
+        presenter = new BerandaPresenter(this);
         etSearch = rootView.findViewById(R.id.et_search_beranda);
-        adapter = new BerandaRecyclerViewAdapter(listBarang, getContext());
-      //  recyclerView = rootView.findViewById(R.id.rv_barang_beranda);
+        adapter = new BerandaRecyclerViewAdapter(listBarang, getContext(), getActivity().getIntent());
+        recyclerView = rootView.findViewById(R.id.rv_barang_beranda);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
-        presenter = new BerandaPresenter(this);
     }
 
     private void initActionSearch(){

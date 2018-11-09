@@ -1,5 +1,8 @@
 package kelompok2.marketplace.com.kuepenjual.ui.login;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -54,17 +57,19 @@ public class LoginPresenter extends BasePresenterNetwork{
     }
 
     public void checkUser(String email, String password){
+        view.showLoading();
         result = service.getUser(email, password);
 
         result.enqueue(new Callback<ModelResponse<Penjual>>() {
             @Override
             public void onResponse(Call<ModelResponse<Penjual>> call, Response<ModelResponse<Penjual>> response) {
-                view.actionLoginSuccess(response.body().getModel().getId());
+                view.hideLoading();
+                view.actionLoginSuccess(response.body().getModel());
             }
 
             @Override
             public void onFailure(Call<ModelResponse<Penjual>> call, Throwable t) {
-
+                view.hideLoading();
             }
         });
     }
@@ -72,6 +77,5 @@ public class LoginPresenter extends BasePresenterNetwork{
     public void checkUserFromEmail(String email){
 
     }
-
-
 }
+

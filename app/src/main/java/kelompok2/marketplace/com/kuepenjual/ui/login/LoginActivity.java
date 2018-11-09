@@ -1,9 +1,12 @@
 package kelompok2.marketplace.com.kuepenjual.ui.login;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.common.UserState;
+import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
+import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 import kelompok2.marketplace.com.kuepenjual.ui.register.RegisterActivity;
 
@@ -35,7 +40,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText etPassword;
     private Button btnLogin;
     private TextView tvRegister;
-    private ProgressBar pb;
+    private AlertDialog.Builder progresBar;
+    private AlertDialog builder;
+
+    private Button btnPb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     private void initView(){
-        etUsername = findViewById(R.id.et_username_login);
+        etUsername = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_masuk_login);
         tvRegister = findViewById(R.id.tv_daftar_register);
@@ -128,8 +136,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void actionLoginSuccess(Integer id) {
-        UserState.getInstance().setIdUser(id);
+    public void actionLoginSuccess(Penjual penjual) {
+        UserState.getInstance().setIdUser(penjual.getId());
+        UserState.getInstance().setPenjual(penjual);
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
         finish();
@@ -137,11 +146,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showLoading() {
-        pb.setVisibility(View.VISIBLE);
+        //pb.setVisibility(View.VISIBLE);
+        //progresBar.show();
+//        View pb = LayoutInflater.from(getApplicationContext()).inflate(R.layout.progress_bar_layout, null);
+//        btnPb = pb.findViewById(R.id.btn_pb);
+//        progresBar = new AlertDialog.Builder(getApplicationContext());
+//        progresBar.setView(pb);
+//        builder = progresBar.create();
+//        builder.show();
     }
 
     @Override
     public void hideLoading() {
-        pb.setVisibility(View.GONE);
+        //pb.setVisibility(View.GONE);
+        //builder.dismiss();
     }
+
+
 }

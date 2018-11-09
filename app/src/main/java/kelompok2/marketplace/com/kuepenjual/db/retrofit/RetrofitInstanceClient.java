@@ -1,6 +1,7 @@
 package kelompok2.marketplace.com.kuepenjual.db.retrofit;
 
 import kelompok2.marketplace.com.kuepenjual.BuildConfig;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,8 +14,12 @@ public class RetrofitInstanceClient {
     }
 
     private void init(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .build();
+
         retrofit = new Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
+                .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
     }
