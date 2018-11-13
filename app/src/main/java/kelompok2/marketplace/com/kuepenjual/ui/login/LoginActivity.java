@@ -37,12 +37,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private TextView tvRegister;
     private ProgressBar pb;
 
-    private Button tes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        init();
+        initComponent();
+        initView();
+        initBtnAction();
         findViewById(R.id.default_google_sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,17 +52,45 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
     }
 
-    private void init(){
+    private void initView(){
+        etUsername = findViewById(R.id.et_email_login);
+        etPassword = findViewById(R.id.et_password_login);
+        btnLogin = findViewById(R.id.btn_masuk_login);
+        tvRegister = findViewById(R.id.tv_daftar_register);
+    }
+
+    private void initComponent(){
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         presenter = new LoginPresenter(this, FirebaseAuth.getInstance(), this);
-        etUsername = findViewById(R.id.et_email_login);
-        etPassword = findViewById(R.id.et_password_login);
     }
 
+    private void initBtnAction(){
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = etUsername.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+                if(!email.equals("") && !password.equals("") && checkEmail(email)){
+                    presenter.checkUser(email,password);
+                }
+                else{
+                    showError();
+                }
+            }
+        });
+
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     private boolean checkEmail(String email){
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
@@ -113,6 +142,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void hideLoading() {
-        pb.setVisibility(View.INVISIBLE);
+        pb.setVisibility(View.GONE);
     }
 }

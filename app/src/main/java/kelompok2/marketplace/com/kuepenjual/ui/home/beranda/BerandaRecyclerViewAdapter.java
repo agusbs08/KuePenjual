@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import kelompok2.marketplace.com.kuepenjual.BuildConfig;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
 import kelompok2.marketplace.com.kuepenjual.model.PenjualanBarangList;
@@ -60,7 +61,7 @@ public class BerandaRecyclerViewAdapter extends RecyclerView.Adapter<BerandaRecy
         }
 
         public void bindItem(Barang barang){
-            Picasso.get().load(barang.getGambar()).into(imageBarang);
+            Picasso.get().load(BuildConfig.BASE_STORAGE + barang.getGambar()).into(imageBarang);
             namaBarang.setText(barang.getNama());
         }
     }
