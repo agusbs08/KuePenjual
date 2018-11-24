@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     private void initView(){
-        etUsername = findViewById(R.id.et_email_login);
+        etUsername = findViewById(R.id.et_username_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_masuk_login);
         tvRegister = findViewById(R.id.tv_daftar_register);
