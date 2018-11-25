@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 
 import kelompok2.marketplace.com.kuepenjual.BuildConfig;
 import kelompok2.marketplace.com.kuepenjual.R;
@@ -82,8 +83,10 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
                 Float stok = Float.parseFloat(stokBarang.getText().toString());
                 Float diskon = Float.parseFloat(diskonBarang.getText().toString());
                 String merk = merkBarang.getText().toString();
-                byte[] image = createImageFile();
-                presenter.updateBarang(nama,harga,diskon,stok,merk,image, barang.getId());
+               // byte[] image = createImageFile();
+                File image = createImageFile();
+                Toast.makeText(getApplicationContext(), nama, Toast.LENGTH_SHORT).show();
+                presenter.updateBarang(nama,harga.intValue(),diskon.intValue(),stok.intValue(),merk,image, barang.getId());
             }
         });
     }
@@ -106,7 +109,7 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
         barang = (Barang) intent.getSerializableExtra("barang");
     }
 
-    private byte[] createImageFile(){
+    private File createImageFile(){
         try{
             File f = new File(getApplicationContext().getCacheDir(), "imageBarang");
             f.createNewFile();
@@ -115,7 +118,13 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos);
             byte[] bitmapdata = bos.toByteArray();
-            return bitmapdata;
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            //return bitmapdata;
+            return f;
         }
         catch (Exception e){
             Log.e("createFile",e.getMessage());

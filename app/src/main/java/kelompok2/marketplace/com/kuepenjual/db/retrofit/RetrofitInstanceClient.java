@@ -2,6 +2,7 @@ package kelompok2.marketplace.com.kuepenjual.db.retrofit;
 
 import kelompok2.marketplace.com.kuepenjual.BuildConfig;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,7 +15,11 @@ public class RetrofitInstanceClient {
     }
 
     private void init(){
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addNetworkInterceptor(interceptor)
                 .build();
 
         retrofit = new Retrofit.Builder()

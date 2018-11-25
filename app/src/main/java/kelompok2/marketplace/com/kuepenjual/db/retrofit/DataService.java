@@ -69,7 +69,7 @@ public interface DataService {
                                                     @Part("jumlah_terjual") RequestBody jumlahTerjual);
 
     @Multipart
-    @PATCH("api/barang/{id}")
+    @POST("api/barang/{id_barang}")
     public Call<ModelResponse<Barang>> updateBarang(
                                                 @Part("_method") RequestBody reqMethod,
                                                 @Part("id_kategori") RequestBody idKategori,
@@ -81,22 +81,37 @@ public interface DataService {
                                                  @Part MultipartBody.Part file,
                                                  @Part("rating") RequestBody rating,
                                                  @Part("jumlah_terjual") RequestBody jumlahTerjual,
-                                                 @Path("id") String idBarang);
+                                                 @Path("id_barang") Integer idBarang);
 
     @Multipart
     @POST("api/barang/{id_barang}")
-    public Call<ModelResponse<Barang>> updatedBarang(
-            @Part("_method") String method,
-            @Part("id_kategori") Integer idKategori,
-            @Part("harga_barang") Float hargabarang,
-            @Part("potongan_harga") Float diskon,
-            @Part("stok_barang") Integer stok,
-            @Part("nama_barang") String nama,
-            @Part("merk_barang") String merk,
+    public Call<Void> updateBarangVoid(
+            @Part("_method") RequestBody reqMethod,
+            @Part("id_kategori") RequestBody idKategori,
+            @Part("harga_barang") RequestBody hargabarang,
+            @Part("potongan_harga") RequestBody diskon,
+            @Part("stok_barang") RequestBody stok,
+            @Part("nama_barang") RequestBody nama,
+            @Part("merk_barang") RequestBody merk,
             @Part MultipartBody.Part file,
-            @Part("rating") Float rating,
-            @Part("jumlah_terjual") Integer jumlahTerjual,
-            @Path("id_barang") String idBarang);
+            @Part("rating") RequestBody rating,
+            @Part("jumlah_terjual") RequestBody jumlahTerjual,
+            @Path("id_barang") Integer idBarang);
+
+    @FormUrlEncoded
+    @PATCH("api/barang/{id_barang}")
+    public Call<Void> updateBarangnoRequest(
+          //  @Field("_method") String reqMethod,
+            @Field("id_kategori") Integer idKategori,
+            @Field("harga_barang") Integer hargabarang,
+            @Field("potongan_harga") Integer diskon,
+            @Field("stok_barang") Integer stok,
+            @Field("nama_barang") String nama,
+            @Field("merk_barang") String merk,
+            //@Part MultipartBody.Part file,
+            @Field("rating") Integer rating,
+            @Field("jumlah_terjual") Integer jumlahTerjual,
+            @Field("id_barang") Integer idBarang);
 
     @FormUrlEncoded
     @POST("api/penjualan")
