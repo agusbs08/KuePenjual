@@ -1,40 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
     android:padding="10dp"
     app:cardBackgroundColor="@color/lightabu"
-    app:contentPadding="10dp"
-    android:elevation="10dp">
+    app:contentPadding="10dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_namapembeli_notifikasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Pembeli"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_alamat_notifikasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat Pembeli"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namapembeli_notifikasi" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_btn_biru"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alamat_notifikasi" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Pembeli"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alamat Pembeli"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rp Total"/>
+            android:layout_marginStart="10dp"
+            android:text="Rp Total"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            tools:layout_editor_absoluteY="55dp" />
 
         <android.support.v7.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        //List : notifikasi_item_barang.xml
+            android:id="@+id/recyclerView"
+            android:layout_width="348dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_btn_biru"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Metode Pengiriman"/>
+            android:layout_height="19dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Metode Pengiriman"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView5"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-    </LinearLayout>
+        //List : notifikasi_item_barang.xml
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
