@@ -24,16 +24,16 @@
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.home.HomeActivity" />
-        <activity android:name=".ui.edit.UpdateActivity"></activity>
+        <activity android:name=".ui.edit.UpdateActivity" />
 
         <!-- service -->
-        <service
-            android:name=".service.PenjualFirebaseMessagingService"
-            >
+        <service android:name=".service.PenjualFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".ui.editprofil.EditProfilActivity"></activity>
     </application>
 
 </manifest>

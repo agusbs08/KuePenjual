@@ -4,26 +4,31 @@
     <item
         android:id="@+id/menu_beranda"
         android:title="Beranda"
+        android:icon="@drawable/ic_shop"
     />
 
     <item
         android:id="@+id/menu_statistik"
-        android:title="Beranda"
+        android:title="Statistik"
+        android:icon="@drawable/ic_analytics"
         />
 
     <item
         android:id="@+id/menu_tambah_barang"
-        android:title="Beranda"
+        android:icon="@drawable/ic_add"
+        android:title="Tambah"
         />
 
     <item
         android:id="@+id/menu_notif"
-        android:title="Beranda"
+        android:icon="@drawable/ic_notification_bell"
+        android:title="Notif"
         />
 
     <item
         android:id="@+id/menu_profil"
-        android:title="Beranda"
+        android:icon="@drawable/ic_avatar"
+        android:title="Profil"
         />
 
 </menu>

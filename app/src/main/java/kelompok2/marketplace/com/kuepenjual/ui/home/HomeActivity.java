@@ -17,6 +17,7 @@ import kelompok2.marketplace.com.kuepenjual.ui.home.notif.NotifikasiFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.profile.ProfileFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.statistik.StatistikFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.tambahbarang.TambahBarangFragment;
+import kelompok2.marketplace.com.kuepenjual.util.BottomNavigationViewHelper;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         subscribeToTopic();
         btn = findViewById(R.id.bottom_navigation_menu);
+        BottomNavigationViewHelper.disableShiftMode(btn);
         initBtn();
         btn.setSelectedItemId(R.id.menu_beranda);
 
