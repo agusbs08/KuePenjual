@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tes Kirim Topic"
+        android:id="@+id/tesnotip"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tes Subscribe Topic"
+        android:id="@+id/tesnotips"
+        app:layout_constraintLeft_toRightOf="@+id/tesnotip"/>
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -86,7 +99,7 @@
         android:layout_height="40dp"
         android:layout_marginEnd="92dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"

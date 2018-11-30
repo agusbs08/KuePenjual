@@ -1,5 +1,7 @@
 package kelompok2.marketplace.com.kuepenjual.ui.home.beranda;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class BerandaPresenter extends BasePresenterNetwork{
     }
 
     public void getListBarang(){
-        result =service.getBarangsBeranda(UserState.getInstance().getIdUser().toString());
+        result =service.getBarangsBeranda(UserState.getInstance().getIdUser());
         result.enqueue(new Callback<ModelResponse<Penjualan>>() {
             @Override
             public void onResponse(Call<ModelResponse<Penjualan>> call, Response<ModelResponse<Penjualan>> response) {
