@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +23,13 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.common.UserState;
 import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
 import kelompok2.marketplace.com.kuepenjual.model.Penjual;
+import kelompok2.marketplace.com.kuepenjual.service.NotifikasiService;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 import kelompok2.marketplace.com.kuepenjual.ui.register.RegisterActivity;
 
@@ -58,6 +61,29 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 startActivityForResult(mGoogleSignInClient.getSignInIntent(), RC_SIGN_IN);
             }
         });
+
+//        FirebaseMessaging.getInstance().subscribeToTopic(topic);
+//        Log.d("btnsub", "subscribe bangsat");
+//        findViewById(R.id.tesnotip).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        NotifikasiService.getInstance().pushNotification(true, topicSetSubscribe);
+//                    }
+//                }).start();
+//            }
+//        });
+//
+//        findViewById(R.id.tesnotips).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseMessaging.getInstance().subscribeToTopic(topicToSubscribe);
+//                Log.d("subcribe", "subscribe bangsat");
+//            }
+//        });
+
     }
 
     private void initView(){

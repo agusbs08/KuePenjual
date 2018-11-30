@@ -31,21 +31,23 @@ public class PenjualFirebaseMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
         // Check if message contains a data payload.
+//        if(remoteMessage.getNotification() != null){
+//            Log.d(TAG, "Title: " + remoteMessage.getNotification().getTitle());
+//            Log.d(TAG, "Body: " + remoteMessage.getNotification().getBody());
+//        }
         if (remoteMessage.getData().isEmpty()) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-            sendNotification(remoteMessage.getNotification().getBody());
-        }
-        else{
-            sendNotification(remoteMessage.getData());
-        }
+            //sendNotification(remoteMessage.getNotification().getBody());
 
-        // Check if message contains a notification payload.
+        }
+        sendNotification(remoteMessage.getData());
 
     }
 
     private void sendNotification(Map<String, String> data) {
 
-        String messageBody = data.get("body").toString();
+        //String messageBody = data.get("body");
+        String messageBody = "LALALALA";
         String NOTIFIKASION_CHANNEL_ID = "com.marketplace.kelompok2.kue.service";
         Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -69,7 +71,7 @@ public class PenjualFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Message")
+                .setContentTitle("PENJUAL")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
@@ -79,39 +81,39 @@ public class PenjualFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
     }
 
-    private void sendNotification(String messageBody) {
-        String NOTIFIKASION_CHANNEL_ID = "com.marketplace.kelompok2.kue.service";
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_ONE_SHOT);
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel notificationChannel =
-                    new NotificationChannel(NOTIFIKASION_CHANNEL_ID,"notification",NotificationManager.IMPORTANCE_DEFAULT);
-            notificationChannel.setDescription("FCM test");
-            notificationChannel.enableLights(true);
-            notificationChannel.setLightColor(R.color.biru);
-            notificationChannel.setVibrationPattern(new long[]{0,1000,500,1000});
-            notificationChannel.enableLights(true);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Message")
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                //.setContentIntent(pendingIntent)
-                ;
-
-        notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
-    }
+//    private void sendNotification(String messageBody) {
+//        String NOTIFIKASION_CHANNEL_ID = "com.marketplace.kelompok2.kue.service";
+//        Intent intent = new Intent(this, HomeActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+//                PendingIntent.FLAG_ONE_SHOT);
+//
+//        NotificationManager notificationManager =
+//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            NotificationChannel notificationChannel =
+//                    new NotificationChannel(NOTIFIKASION_CHANNEL_ID,"notification",NotificationManager.IMPORTANCE_DEFAULT);
+//            notificationChannel.setDescription("FCM test");
+//            notificationChannel.enableLights(true);
+//            notificationChannel.setLightColor(R.color.biru);
+//            notificationChannel.setVibrationPattern(new long[]{0,1000,500,1000});
+//            notificationChannel.enableLights(true);
+//            notificationManager.createNotificationChannel(notificationChannel);
+//        }
+//
+//        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setContentTitle("FCM Message")
+//                .setContentText(messageBody)
+//                .setAutoCancel(true)
+//                .setSound(defaultSoundUri)
+//                //.setContentIntent(pendingIntent)
+//                ;
+//
+//        notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
+//    }
 
     @Override
     public void onNewToken(String s) {
