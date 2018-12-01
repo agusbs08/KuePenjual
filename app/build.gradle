@@ -66,6 +66,9 @@ dependencies {
 
     //materialSearchBar
     implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
+
+    //chart
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
