@@ -1,5 +1,7 @@
 package kelompok2.marketplace.com.kuepenjual.db.retrofit;
 
+import android.content.Intent;
+
 import java.io.File;
 
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
@@ -122,4 +124,20 @@ public interface DataService {
 
     @DELETE("api/barang/{id_barang}")
     public Call<ModelResponse<Barang>> deleteBarang(@Path("id_barang") Integer idBarang);
+
+    @Multipart
+    @POST("api/penjual/{id}")
+    public Call<ModelResponse<Penjual>> updatePenjual(
+            @Part("_method") RequestBody reqMethod,
+           // @Part("username_pen") RequestBody reqUsername,
+            @Part("password_pen") RequestBody reqPassword,
+            @Part("jenis_kelamin_pen") RequestBody reqJenisKelamin,
+            @Part("nama_pen") RequestBody reqNamaUser,
+            @Part("nama_toko_pen") RequestBody reqNamaToko,
+           // @Part("email_pen") RequestBody reqEmail,
+            @Part("notlp_pen") RequestBody reqNotlp,
+            @Part("alamat_pen") RequestBody reqAlamat,
+            @Part MultipartBody.Part image,
+            @Path("id") Integer id
+            );
 }

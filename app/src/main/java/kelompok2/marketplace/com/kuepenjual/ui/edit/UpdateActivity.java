@@ -196,7 +196,7 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
     @Override
     public void actionUpdateSuccess() {
         Toast.makeText(getApplicationContext(), "Update Success", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//        startActivity(intent);
     }
 }
