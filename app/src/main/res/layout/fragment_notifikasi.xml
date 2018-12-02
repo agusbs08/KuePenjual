@@ -33,7 +33,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Notifikasi Pesanan"
+        android:text="Notifikasi"
         android:textColor="@color/abu"
         app:layout_constraintBottom_toTopOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
-    //List : notifikasi_item.xml
+    <!--List : notifikasi_item.xml -->
 
 </android.support.constraint.ConstraintLayout>

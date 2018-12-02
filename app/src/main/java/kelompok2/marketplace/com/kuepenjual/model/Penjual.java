@@ -19,7 +19,7 @@ public class Penjual {
     private String email;
 
     @SerializedName("notlp_pen")
-    private Integer noTelepon;
+    private String noTelepon;
 
     @SerializedName("nama_pen")
     private String nama;
@@ -77,11 +77,11 @@ public class Penjual {
         this.email = email;
     }
 
-    public Integer getNoTelepon() {
+    public String getNoTelepon() {
         return noTelepon;
     }
 
-    public void setNoTelepon(Integer noTelepon) {
+    public void setNoTelepon(String noTelepon) {
         this.noTelepon = noTelepon;
     }
 

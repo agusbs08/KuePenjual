@@ -66,7 +66,8 @@
                     android:src="@drawable/ic_camera"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerCrop"/>
 
                 <EditText
                     android:id="@+id/et_namabarang_tambah"
@@ -163,20 +164,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_diskonharga_tambah"/>
 
+                <Button
+                    android:id="@+id/btn_tambahbarang_tambah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_btn_biru"
+                    android:text="Edit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@+id/et_merkbarang_tambah"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
             </android.support.constraint.ConstraintLayout>
         </android.support.v4.widget.NestedScrollView>
 
-        <Button
-            android:id="@+id/btn_tambahbarang_tambah"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_btn_biru"
-            android:text="Edit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
