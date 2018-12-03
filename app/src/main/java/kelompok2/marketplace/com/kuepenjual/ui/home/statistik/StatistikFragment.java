@@ -8,26 +8,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 import kelompok2.marketplace.com.kuepenjual.R;
 
 public class StatistikFragment extends Fragment {
 
-    private GraphView graph;
-    @Override
+    private BarChart barChart;
+
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
+
+        ArrayList<BarEntry> entries = new ArrayList<>();
+
+        entries.add(new BarEntry(0f, 30f));
+        entries.add(new BarEntry(1f, 80f));
+        entries.add(new BarEntry(2f, 60f));
+        entries.add(new BarEntry(3f, 50f));
+        entries.add(new BarEntry(4f, 20f));
+        entries.add(new BarEntry(5f, 70f));
+        entries.add(new BarEntry(6f, 60f));
+        entries.add(new BarEntry(7f, 80f));
+        entries.add(new BarEntry(8f, 60f));
+        entries.add(new BarEntry(9f, 50f));
+        entries.add(new BarEntry(10f, 20f));
+        entries.add(new BarEntry(11f, 70f));
+        entries.add(new BarEntry(12f, 60f));
+
+        BarDataSet set = new BarDataSet(entries,"Penjualan 2018");
+        BarData data = new BarData(set);
+        barChart.setData(data);
+        set.setColors(ColorTemplate.PASTEL_COLORS);
+        //String[] mLabels = new String[] { "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agt", "Sep", "Okt", "Nov", "Des" };
+        barChart.animateXY(1500, 1500);
+        barChart.setFitBars(true);
+        barChart.invalidate();
     }
 
     @Nullable
@@ -39,6 +61,6 @@ public class StatistikFragment extends Fragment {
     }
 
     private void initView(View view){
-        graph = view.findViewById(R.id.graph);
+        barChart = view.findViewById(R.id.chart);
     }
 }
