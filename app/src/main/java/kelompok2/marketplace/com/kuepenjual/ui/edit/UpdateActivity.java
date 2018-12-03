@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -58,9 +60,29 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
         stokBarang.setText(barang.getStok().toString());
         diskonBarang.setText(barang.getPotonganHarga().toString());
         merkBarang.setText(barang.getMerk());
-        Picasso.get().load(BuildConfig.BASE_STORAGE + barang.getGambar()).into(imageButton);
+        loadImage();
         setImageButton();
         setBtnUpdate();
+    }
+
+    private void loadImage(){
+        Picasso.get().load(BuildConfig.BASE_STORAGE + barang.getGambar()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                foto = bitmap;
+                imageButton.setImageBitmap(foto);
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
     }
 
     private void initView(){
@@ -174,7 +196,7 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
     @Override
     public void actionUpdateSuccess() {
         Toast.makeText(getApplicationContext(), "Update Success", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//        startActivity(intent);
     }
 }

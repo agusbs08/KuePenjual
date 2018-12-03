@@ -62,28 +62,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
-//        FirebaseMessaging.getInstance().subscribeToTopic(topic);
-//        Log.d("btnsub", "subscribe bangsat");
-//        findViewById(R.id.tesnotip).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        NotifikasiService.getInstance().pushNotification(true, topicSetSubscribe);
-//                    }
-//                }).start();
-//            }
-//        });
-//
-//        findViewById(R.id.tesnotips).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().subscribeToTopic(topicToSubscribe);
-//                Log.d("subcribe", "subscribe bangsat");
-//            }
-//        });
-
     }
 
     private void initView(){

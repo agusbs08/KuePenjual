@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tes Kirim Topic"
-        android:id="@+id/tesnotip"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tes Subscribe Topic"
-        android:id="@+id/tesnotips"
-        app:layout_constraintLeft_toRightOf="@+id/tesnotip"/>
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"

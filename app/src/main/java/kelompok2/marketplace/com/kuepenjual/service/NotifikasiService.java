@@ -57,7 +57,7 @@ public class NotifikasiService {
 
         try{
             jNotification.put("idpenjual", UserState.getInstance().getIdUser().toString());
-            jNotification.put("title", "Dari Penjual");
+            jNotification.put("title", "Status Pesanan");
             jNotification.put("body", "Hay Pembeli");
             jNotification.put("state", state);
 

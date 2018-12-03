@@ -41,7 +41,15 @@
         app:layout_constraintTop_toTopOf="@+id/view2"
         tools:ignore="HardcodedText"/>
 
+    <ProgressBar
+        android:id="@+id/pb_notif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view3"
+        />
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package kelompok2.marketplace.com.kuepenjual.ui.home;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -24,17 +25,31 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView btn;
 
     private String topicToSubscribe = "frompembeli";
+    private int state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        initData();
         subscribeToTopic();
         btn = findViewById(R.id.bottom_navigation_menu);
         BottomNavigationViewHelper.disableShiftMode(btn);
         initBtn();
-        btn.setSelectedItemId(R.id.menu_beranda);
+        if(state == 0){
+            btn.setSelectedItemId(R.id.menu_beranda);
+        }
+        else if(state == 2){
+            btn.setSelectedItemId(R.id.menu_notif);
+        }
+        else if(state == 3){
+            btn.setSelectedItemId(R.id.menu_profil);
+        }
+    }
 
+    private void initData(){
+        Intent intent = getIntent();
+        state = intent.getIntExtra("state", 0);
     }
 
     private void subscribeToTopic(){

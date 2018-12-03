@@ -46,8 +46,8 @@ public class PenjualFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(Map<String, String> data) {
 
-        //String messageBody = data.get("body");
-        String messageBody = "LALALALA";
+        String messageBody = data.get("body");
+        String title = data.get("title");
         String NOTIFIKASION_CHANNEL_ID = "com.marketplace.kelompok2.kue.service";
         Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -71,11 +71,11 @@ public class PenjualFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("PENJUAL")
+                .setContentTitle(title)
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                //.setContentIntent(pendingIntent)
+                .setContentIntent(pendingIntent)
                 ;
 
         notificationManager.notify(new Random().nextInt(), notificationBuilder.build());

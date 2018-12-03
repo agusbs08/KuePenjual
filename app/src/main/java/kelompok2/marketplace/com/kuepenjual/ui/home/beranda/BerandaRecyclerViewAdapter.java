@@ -24,6 +24,7 @@ import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
 import kelompok2.marketplace.com.kuepenjual.model.PenjualanBarangList;
 import kelompok2.marketplace.com.kuepenjual.ui.edit.UpdateActivity;
+import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 
 public class BerandaRecyclerViewAdapter extends RecyclerView.Adapter<BerandaRecyclerViewAdapter.BerandaViewHolder> {
 
@@ -125,6 +126,7 @@ public class BerandaRecyclerViewAdapter extends RecyclerView.Adapter<BerandaRecy
         @Override
         public void refreshLayout() {
             Toast.makeText(context, "Barang Sudah Dihapus", Toast.LENGTH_SHORT).show();
+            intent = new Intent(context, HomeActivity.class);
             context.startActivity(intent);
         }
     }
