@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import kelompok2.marketplace.com.kuepenjual.BuildConfig;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
+import kelompok2.marketplace.com.kuepenjual.model.BarangTransaksi;
 
 public class NotifikasiBarangRecyclerViewAdapter extends RecyclerView.Adapter<NotifikasiBarangRecyclerViewAdapter.NotifikasiBarangViewHolder> {
 
-    private ArrayList<Barang> listBarang;
+    private ArrayList<BarangTransaksi> listBarang;
 
-    public NotifikasiBarangRecyclerViewAdapter(ArrayList<Barang> listBarang){
+    public NotifikasiBarangRecyclerViewAdapter(ArrayList<BarangTransaksi> listBarang){
         this.listBarang = listBarang;
     }
 
@@ -57,7 +58,8 @@ public class NotifikasiBarangRecyclerViewAdapter extends RecyclerView.Adapter<No
             hargaBarang = view.findViewById(R.id.tv_harga_notifikasi);
         }
 
-        void bindItem(Barang barang){
+        void bindItem(BarangTransaksi barangTransaksi){
+            Barang barang = barangTransaksi.getBarang();
             Picasso.get().load(BuildConfig.BASE_STORAGE + barang.getGambar()).into(imageBarang);
             namaBarang.setText(barang.getNama());
             hargaBarang.setText(barang.getHarga().toString());

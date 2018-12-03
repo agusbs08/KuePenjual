@@ -17,31 +17,41 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 import kelompok2.marketplace.com.kuepenjual.R;
+import kelompok2.marketplace.com.kuepenjual.model.PenjualanBarangList;
 
-public class StatistikFragment extends Fragment {
+public class StatistikFragment extends Fragment implements StatistikView{
 
     private BarChart barChart;
+    private ArrayList<BarEntry> entries;
+    private ArrayList<PenjualanBarangList> listBarang;
+    private StatistikPresenter presenter;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initData();
+        presenter.getListBarang();
+//
+//        entries.add(new BarEntry(0f, 30f));
+//        entries.add(new BarEntry(1f, 80f));
+//        entries.add(new BarEntry(2f, 60f));
+//        entries.add(new BarEntry(3f, 50f));
+//        entries.add(new BarEntry(4f, 20f));
+//        entries.add(new BarEntry(5f, 70f));
+//        entries.add(new BarEntry(6f, 60f));
+//        entries.add(new BarEntry(7f, 80f));
+//        entries.add(new BarEntry(8f, 60f));
+//        entries.add(new BarEntry(9f, 50f));
+//        entries.add(new BarEntry(10f, 20f));
+//        entries.add(new BarEntry(11f, 70f));
+//        entries.add(new BarEntry(12f, 60f));
+    }
 
+    private void initData(){
+        entries = new ArrayList<>();
+        listBarang = new ArrayList<>();
+    }
 
-        ArrayList<BarEntry> entries = new ArrayList<>();
-
-        entries.add(new BarEntry(0f, 30f));
-        entries.add(new BarEntry(1f, 80f));
-        entries.add(new BarEntry(2f, 60f));
-        entries.add(new BarEntry(3f, 50f));
-        entries.add(new BarEntry(4f, 20f));
-        entries.add(new BarEntry(5f, 70f));
-        entries.add(new BarEntry(6f, 60f));
-        entries.add(new BarEntry(7f, 80f));
-        entries.add(new BarEntry(8f, 60f));
-        entries.add(new BarEntry(9f, 50f));
-        entries.add(new BarEntry(10f, 20f));
-        entries.add(new BarEntry(11f, 70f));
-        entries.add(new BarEntry(12f, 60f));
-
+    private void initChart(){
         BarDataSet set = new BarDataSet(entries,"Penjualan 2018");
         BarData data = new BarData(set);
         barChart.setData(data);
@@ -62,5 +72,41 @@ public class StatistikFragment extends Fragment {
 
     private void initView(View view){
         barChart = view.findViewById(R.id.chart);
+        presenter = new StatistikPresenter(this);
+    }
+
+    @Override
+    public void showListData(ArrayList<PenjualanBarangList> listBarang) {
+        entries.clear();
+        listBarang = shorData(listBarang);
+        for(Integer i=0;i<10;i++){
+            entries.add(new BarEntry(i.floatValue(), listBarang.get(i).getBarang().getJumlahTerjual().floatValue()));
+        }
+        initChart();
+    }
+
+    private ArrayList<PenjualanBarangList> shorData(ArrayList<PenjualanBarangList> listBarang){
+        for(int i=0;i<listBarang.size()-1;i++){
+            for(int j=0;j<listBarang.size()-1;j++){
+                PenjualanBarangList barang = listBarang.get(j);
+                PenjualanBarangList tes = listBarang.get(j+1);
+                if(barang.getBarang().getJumlahTerjual() < tes.getBarang().getJumlahTerjual()){
+                    PenjualanBarangList temp = listBarang.get(j);
+                    listBarang.set(j, tes);
+                    listBarang.set(j+1, temp);
+                }
+            }
+        }
+        return listBarang;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

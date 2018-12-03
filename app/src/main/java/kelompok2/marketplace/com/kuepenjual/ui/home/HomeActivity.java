@@ -92,4 +92,9 @@ public class HomeActivity extends AppCompatActivity {
                 .replace(R.id.main_container, fragment, "Home")
                 .commit();
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setFragment(new ProfileFragment());
+    }
 }

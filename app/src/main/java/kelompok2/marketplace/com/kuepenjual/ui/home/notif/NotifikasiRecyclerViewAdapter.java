@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
+import kelompok2.marketplace.com.kuepenjual.model.BarangTransaksi;
 import kelompok2.marketplace.com.kuepenjual.model.list.BarangTransaksiList;
 
 public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<NotifikasiRecyclerViewAdapter.NotifikasiViewHolder>{
@@ -44,8 +46,8 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
 
         private RecyclerView recyclerView;
         private NotifikasiBarangRecyclerViewAdapter adapter;
-        private ArrayList<Barang> listBarang;
         private Context context;
+        private TextView namaPembeli;
 
         public NotifikasiViewHolder(View view){
             super(view);
@@ -55,6 +57,7 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
 
         private void initView(View view){
             recyclerView = view.findViewById(R.id.recyclerView);
+            namaPembeli = view.findViewById(R.id.tv_namapembeli_notifikasi);
         }
 
         void bindItem(BarangTransaksiList barangTransaksiList){
@@ -63,6 +66,7 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                 recyclerView.setAdapter(adapter);
             }
+            namaPembeli.setText(barangTransaksiList.getPembeli().getNama());
         }
     }
 }
