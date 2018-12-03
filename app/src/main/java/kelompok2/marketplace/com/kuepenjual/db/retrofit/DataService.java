@@ -9,6 +9,7 @@ import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
 import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 import kelompok2.marketplace.com.kuepenjual.model.Penjualan;
 import kelompok2.marketplace.com.kuepenjual.model.Resep;
+import kelompok2.marketplace.com.kuepenjual.model.list.BarangTransaksiList;
 import kelompok2.marketplace.com.kuepenjual.model.response.DataResponse;
 import kelompok2.marketplace.com.kuepenjual.model.response.ModelResponse;
 import okhttp3.MultipartBody;
@@ -140,4 +141,7 @@ public interface DataService {
             @Part MultipartBody.Part image,
             @Path("id") Integer id
             );
+
+    @GET("api/transaksi")
+    public Call<DataResponse<BarangTransaksiList>> getAllTransaksi(@Query("id_penjual") Integer idPenjual);
 }
