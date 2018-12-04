@@ -36,6 +36,7 @@
         </service>
 
         <activity android:name=".ui.editprofil.EditProfilActivity" />
+        <activity android:name=".ui.intro.IntroActivity"></activity>
     </application>
 
 </manifest>

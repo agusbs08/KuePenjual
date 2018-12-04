@@ -20,6 +20,7 @@ import java.util.List;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
 import kelompok2.marketplace.com.kuepenjual.model.PenjualanBarangList;
+import kelompok2.marketplace.com.kuepenjual.ui.home.HomeSearchView;
 
 public class BerandaFragment extends Fragment implements BerandaView{
 
@@ -55,10 +56,12 @@ public class BerandaFragment extends Fragment implements BerandaView{
     }
 
     private void initActionSearch(){
+        etSearch.setFocusable(false);
         etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                HomeSearchView view = (HomeSearchView)getActivity();
+                view.setSearchFragment();
             }
         });
     }

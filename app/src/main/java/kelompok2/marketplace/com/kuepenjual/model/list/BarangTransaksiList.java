@@ -5,18 +5,20 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 import kelompok2.marketplace.com.kuepenjual.model.Barang;
+import kelompok2.marketplace.com.kuepenjual.model.BarangTransaksi;
 import kelompok2.marketplace.com.kuepenjual.model.DetailTransaksi;
+import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
 import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 
 public class BarangTransaksiList {
     @SerializedName("detail_transaksi")
     private DetailTransaksi detailTransaksi;
 
-    @SerializedName("penjual")
-    private Penjual penjual;
+    @SerializedName("pembeli")
+    private Pembeli pembeli;
 
     @SerializedName("list_barang")
-    private ArrayList<Barang> listBarang;
+    private ArrayList<BarangTransaksi> listBarang;
 
     public DetailTransaksi getDetailTransaksi() {
         return detailTransaksi;
@@ -26,19 +28,19 @@ public class BarangTransaksiList {
         this.detailTransaksi = detailTransaksi;
     }
 
-    public Penjual getPenjual() {
-        return penjual;
+    public Pembeli getPembeli() {
+        return pembeli;
     }
 
-    public void setPenjual(Penjual penjual) {
-        this.penjual = penjual;
+    public void setPembeli(Pembeli pembeli) {
+        this.pembeli = pembeli;
     }
 
-    public ArrayList<Barang> getListBarang() {
+    public ArrayList<BarangTransaksi> getListBarang() {
         return listBarang;
     }
 
-    public void setListBarang(ArrayList<Barang> listBarang) {
+    public void setListBarang(ArrayList<BarangTransaksi> listBarang) {
         this.listBarang = listBarang;
     }
 }
