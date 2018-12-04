@@ -48,6 +48,7 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
         private NotifikasiBarangRecyclerViewAdapter adapter;
         private Context context;
         private TextView namaPembeli;
+        private TextView totalHarga;
 
         public NotifikasiViewHolder(View view){
             super(view);
@@ -58,6 +59,7 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
         private void initView(View view){
             recyclerView = view.findViewById(R.id.recyclerView);
             namaPembeli = view.findViewById(R.id.tv_namapembeli_notifikasi);
+            totalHarga = view.findViewById(R.id.tv_totalharga_notif);
         }
 
         void bindItem(BarangTransaksiList barangTransaksiList){
@@ -67,6 +69,16 @@ public class NotifikasiRecyclerViewAdapter extends RecyclerView.Adapter<Notifika
                 recyclerView.setAdapter(adapter);
             }
             namaPembeli.setText(barangTransaksiList.getPembeli().getNama());
+            totalHarga.setText("Rp " + getTotalHarga(barangTransaksiList));
+        }
+
+        private String getTotalHarga(BarangTransaksiList barangTransaksiList){
+            Float total = new Float(0);
+            for(BarangTransaksi barangTransaksi : barangTransaksiList.getListBarang()){
+                total += barangTransaksi.getBarang().getHarga();
+            }
+            Integer harga =total.intValue();
+            return harga.toString();
         }
     }
 }

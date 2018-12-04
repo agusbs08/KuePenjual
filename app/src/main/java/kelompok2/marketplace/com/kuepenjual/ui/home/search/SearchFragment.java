@@ -116,6 +116,6 @@ public class SearchFragment extends Fragment implements SearchView {
     public void showListBarang(ArrayList<PenjualanBarangList> listBarang) {
         this.listBarangAll.clear();
         this.listBarangAll.addAll(listBarang);
-        updateList(" ");
+        updateList("xx");
     }
 }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,8 @@ public class StatistikFragment extends Fragment implements StatistikView{
     private ArrayList<BarEntry> entries;
     private ArrayList<PenjualanBarangList> listBarang;
     private StatistikPresenter presenter;
+    private RecyclerView recyclerView;
+    private StatistikRecyclerViewAdapter adapter;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -49,6 +53,8 @@ public class StatistikFragment extends Fragment implements StatistikView{
     private void initData(){
         entries = new ArrayList<>();
         listBarang = new ArrayList<>();
+        adapter = new StatistikRecyclerViewAdapter(listBarang);
+        recyclerView.setAdapter(adapter);
     }
 
     private void initChart(){
@@ -73,6 +79,8 @@ public class StatistikFragment extends Fragment implements StatistikView{
     private void initView(View view){
         barChart = view.findViewById(R.id.chart);
         presenter = new StatistikPresenter(this);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -82,6 +90,9 @@ public class StatistikFragment extends Fragment implements StatistikView{
         for(Integer i=0;i<10;i++){
             entries.add(new BarEntry(i.floatValue(), listBarang.get(i).getBarang().getJumlahTerjual().floatValue()));
         }
+        this.listBarang.clear();
+        this.listBarang.addAll(listBarang);
+        adapter.notifyDataSetChanged();
         initChart();
     }
 
