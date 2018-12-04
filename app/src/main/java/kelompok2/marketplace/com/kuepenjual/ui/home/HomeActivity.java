@@ -16,11 +16,12 @@ import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.ui.home.beranda.BerandaFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.notif.NotifikasiFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.profile.ProfileFragment;
+import kelompok2.marketplace.com.kuepenjual.ui.home.search.SearchFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.statistik.StatistikFragment;
 import kelompok2.marketplace.com.kuepenjual.ui.home.tambahbarang.TambahBarangFragment;
 import kelompok2.marketplace.com.kuepenjual.util.BottomNavigationViewHelper;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HomeSearchView{
 
     private BottomNavigationView btn;
 
@@ -90,6 +91,19 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_container, fragment, "Home")
+                .commit();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setFragment(new ProfileFragment());
+    }
+
+    @Override
+    public void setSearchFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_container, new SearchFragment(), "Home")
                 .commit();
     }
 }

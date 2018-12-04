@@ -73,10 +73,11 @@ dependencies {
 
 
     //materialSearchBar
-    implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
 
+    implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
     //chart
     //implementation 'com.jjoe64:graphview:4.2.2'
+
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }
 
