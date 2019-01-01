@@ -21,6 +21,7 @@ import android.widget.TextView;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 import kelompok2.marketplace.com.kuepenjual.ui.login.LoginActivity;
+import kelompok2.marketplace.com.kuepenjual.ui.splash.SplashScreenActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -122,7 +123,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, SplashScreenActivity.class));
         finish();
     }
 

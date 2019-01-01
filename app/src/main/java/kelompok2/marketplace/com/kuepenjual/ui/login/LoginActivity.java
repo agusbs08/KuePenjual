@@ -30,11 +30,14 @@ import kelompok2.marketplace.com.kuepenjual.common.UserState;
 import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
 import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 import kelompok2.marketplace.com.kuepenjual.service.NotifikasiService;
+import kelompok2.marketplace.com.kuepenjual.ui.PrefManager;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
 import kelompok2.marketplace.com.kuepenjual.ui.register.RegisterActivity;
+import kelompok2.marketplace.com.kuepenjual.util.FormHelper;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
+    private final String TAG = LoginActivity.class.getSimpleName();
     public final int RC_SIGN_IN = 234;
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInOptions gso;
@@ -86,11 +89,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             public void onClick(View v) {
                 String email = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-                if(!email.equals("") && !password.equals("") && checkEmail(email)){
-                    presenter.checkUser(email,password);
+                if(!email.equals("") && !password.equals("")){
+
+                    if(FormHelper.checkEmail(email)){
+                        presenter.checkUser(email,password);
+                    }
+                    else{
+                        showError("Masukkan email sesuai format");
+                    }
                 }
                 else{
-                    showError();
+                    showError("Isi field yang kosong");
                 }
             }
         });
@@ -103,10 +112,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
     }
-    private boolean checkEmail(String email){
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -119,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 presenter.firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                showError();
+                Log.d(TAG,e.getMessage());
             }
         }
     }
@@ -131,16 +136,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
            presenter.checkUserFromEmail(user.getEmail());
         }
         else{
-            showError();
+            showError("User tidak ditemukan");
         }
     }
     @Override
-    public void showError(){
-        Toast.makeText(this, "Gagal", Toast.LENGTH_SHORT).show();
+    public void showError(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void actionLoginSuccess(Penjual penjual) {
+        PrefManager pref = new PrefManager(getApplicationContext());
+        pref.setUser(penjual.getId(), penjual);
         UserState.getInstance().setIdUser(penjual.getId());
         UserState.getInstance().setPenjual(penjual);
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

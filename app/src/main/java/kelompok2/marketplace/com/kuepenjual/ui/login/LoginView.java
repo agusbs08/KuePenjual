@@ -7,6 +7,6 @@ import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 
 public interface LoginView extends BaseView{
     void updateUI(FirebaseUser user);
-    void showError();
+    void showError(String message);
     void actionLoginSuccess(Penjual penjual);
 }

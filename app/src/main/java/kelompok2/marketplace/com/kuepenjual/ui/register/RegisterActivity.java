@@ -12,8 +12,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
+import kelompok2.marketplace.com.kuepenjual.util.FormHelper;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
@@ -73,28 +77,34 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
                 String gender = radioGender.getText().toString();
                 if(!username.equals("") && !password.equals("") && !rePassword.equals("")
                     && !email.equals("") && !namaToko.equals("") && !noTlp.equals("")
-                    && checkEmail(email) && checkPhone(noTlp) && password.equals(rePassword)){
+                    ){
 
-                    presenter.register(username, email, password, noTlp, namaToko, gender);
+                    if(!FormHelper.checkUsername(username)){
+                        showError("Masukkan username sesuai format");
+                    }
+                    else if(!FormHelper.checkEmail(email)){
+                        showError("Masukkan email sesuai format");
+                    }
+                    else if(!FormHelper.checkPhone(noTlp)){
+                        showError("Masukkan No Telepon sesuai format");
+                    }
+                    else if(password.equals(rePassword)){
+                        showError("Re-Password tidak sesuai dengan password");
+                    }
+                    else{
+                        presenter.register(username, email, password, noTlp, namaToko, gender);
+                    }
                 }
                 else{
-                    showError();
+                    showError("Isi Field yang kosong");
                 }
             }
         });
     }
 
-    private boolean checkEmail(String email){
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean checkPhone(String phone){
-        return Patterns.PHONE.matcher(phone).matches();
-    }
-
     @Override
-    public void showError() {
-        Toast.makeText(this,"Isi Field yang kosong", Toast.LENGTH_SHORT).show();
+    public void showError(String message) {
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -107,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @Override
     public void actionRegisterFailed() {
-        Toast.makeText(this,"Register Failed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Register Failed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -117,6 +127,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @Override
     public void hideLoading() {
-        pb.setVisibility(View.GONE);
+        pb.setVisibility(View.INVISIBLE);
     }
 }

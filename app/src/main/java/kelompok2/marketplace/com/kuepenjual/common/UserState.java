@@ -1,5 +1,7 @@
 package kelompok2.marketplace.com.kuepenjual.common;
 
+import android.content.SharedPreferences;
+
 import kelompok2.marketplace.com.kuepenjual.model.Pembeli;
 import kelompok2.marketplace.com.kuepenjual.model.Penjual;
 
