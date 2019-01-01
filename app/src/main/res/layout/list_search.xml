@@ -29,7 +29,7 @@
                 android:textColor="@color/biru"/>
 
             <ImageView
-                android:id="@+id/img_barang_beranda"
+                android:id="@+id/img_fotobarang_list_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -62,7 +62,7 @@
                 android:paddingRight="10dp"
                 />
             <TextView
-                android:id="@+id/tv_namabarang_beranda"
+                android:id="@+id/tv_namabarang_list_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -72,7 +72,7 @@
                 android:text="Nama Barang"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_barang_beranda"
+                app:layout_constraintBottom_toBottomOf="@+id/img_fotobarang_list_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
                 app:layout_constraintVertical_bias="0.8" />
 
             <TextView
-                android:id="@+id/tv_hargabarang_beranda"
+                android:id="@+id/tv_hargabarang_list_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -95,11 +95,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_namabarang_beranda"
+                app:layout_constraintTop_toBottomOf="@+id/tv_namabarang_list_search"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/btn_sampah_beranda"
+                android:id="@+id/btn_sampah_list_search"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="16dp"
@@ -111,13 +111,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btn_edit_beranda"
+                android:id="@+id/btn_edit_list_search"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/ic_edit"
-                app:layout_constraintBottom_toBottomOf="@+id/img_barang_beranda"
+                app:layout_constraintBottom_toBottomOf="@+id/img_fotobarang_list_search"
                 android:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent" />
         </android.support.constraint.ConstraintLayout>
