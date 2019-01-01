@@ -27,7 +27,7 @@ public class SearchRecyclerViewPresenter extends BasePresenterNetwork {
             @Override
             public void onResponse(Call<ModelResponse<Barang>> call, Response<ModelResponse<Barang>> response) {
                 if(response.isSuccessful()){
-                    Log.e("deletePenjualan", response.body().getMessage());
+                    Log.d("deletePenjualan", "Sukses hapus penjualan");
                     deleteBarang(id);
                 }
                 else{
@@ -49,14 +49,17 @@ public class SearchRecyclerViewPresenter extends BasePresenterNetwork {
             @Override
             public void onResponse(Call<ModelResponse<Barang>> call, Response<ModelResponse<Barang>> response) {
                 if (response.isSuccessful()) {
-                    Log.e("deleteBarang", response.body().getMessage());
+                    Log.d("deleteBarang", "sukses hapus barang");
                     view.refreshLayout();
+                }
+                else{
+                    Log.e("deleteBarang", response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<ModelResponse<Barang>> call, Throwable t) {
-
+                Log.e("deletebarang", t.getMessage());
             }
         });
     }

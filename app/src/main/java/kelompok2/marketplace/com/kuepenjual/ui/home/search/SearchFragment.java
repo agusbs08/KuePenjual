@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -97,7 +98,7 @@ public class SearchFragment extends Fragment implements SearchView {
         listBarangAll = new ArrayList<>();
         listBarangSearch = new ArrayList<>();
         adapter = new SearchRecyclerViewAdapter(listBarangSearch, getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
         presenter = new SearchPresenter(this);
     }

@@ -50,21 +50,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private AlertDialog builder;
 
     private Button btnPb;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initComponent();
-        initView();
-        initBtnAction();
-        findViewById(R.id.default_google_sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(mGoogleSignInClient.getSignInIntent(), RC_SIGN_IN);
-            }
-        });
-
+        if(prefManager.getUserId() != 0){
+            UserState.getInstance().setIdUser(prefManager.getUserId());
+            UserState.getInstance().setPenjual(prefManager.getObjPenjual());
+            lauchHomeActivity();
+        }
+        else {
+            initView();
+            initBtnAction();
+            findViewById(R.id.default_google_sign_in_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivityForResult(mGoogleSignInClient.getSignInIntent(), RC_SIGN_IN);
+                }
+            });
+        }
     }
 
     private void initView(){
@@ -81,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         presenter = new LoginPresenter(this, FirebaseAuth.getInstance(), this);
+        prefManager = new PrefManager(getApplicationContext());
     }
 
     private void initBtnAction(){
@@ -146,13 +154,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void actionLoginSuccess(Penjual penjual) {
-        PrefManager pref = new PrefManager(getApplicationContext());
-        pref.setUser(penjual.getId(), penjual);
+        prefManager.setUser(penjual.getId(), penjual);
         UserState.getInstance().setIdUser(penjual.getId());
         UserState.getInstance().setPenjual(penjual);
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
-        finish();
+        lauchHomeActivity();
     }
 
     @Override
@@ -173,5 +178,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         //builder.dismiss();
     }
 
+    private void lauchHomeActivity(){
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 }

@@ -29,18 +29,16 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     private ArrayList<PenjualanBarangList> listBarang;
     private Context context;
-    private Intent intent;
 
-    public SearchRecyclerViewAdapter(ArrayList<PenjualanBarangList> listBarang,Context context, Intent intent){
+    public SearchRecyclerViewAdapter(ArrayList<PenjualanBarangList> listBarang,Context context){
         this.listBarang = listBarang;
         this.context = context;
-        this.intent = intent;
     }
 
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SearchViewHolder(LayoutInflater.from(context).inflate(R.layout.list_search, parent, false), context,intent);
+        return new SearchViewHolder(LayoutInflater.from(context).inflate(R.layout.list_search, parent, false), context);
     }
 
     @Override
@@ -61,14 +59,12 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         private TextView hargaBarang;
         private Button btnUpdate;
         private Button btnDelete;
-        private Intent intent;
         private SearchRecyclerViewPresenter presenter;
 
 
-        public SearchViewHolder(View view, Context context, Intent intent){
+        public SearchViewHolder(View view, Context context){
             super(view);
             this.context = context;
-            this.intent = intent;
             presenter = new SearchRecyclerViewPresenter(this);
             initView(view);
         }
@@ -135,7 +131,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         @Override
         public void refreshLayout() {
             Toast.makeText(context, "Barang Sudah Dihapus", Toast.LENGTH_SHORT).show();
-            intent = new Intent(context, HomeActivity.class);
+            Intent intent = new Intent(context, HomeActivity.class);
             context.startActivity(intent);
         }
     }
