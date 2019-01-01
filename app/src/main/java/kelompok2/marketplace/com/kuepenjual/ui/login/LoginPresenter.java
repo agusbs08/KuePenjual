@@ -50,7 +50,7 @@ public class LoginPresenter extends BasePresenterNetwork{
                             view.updateUI(user);
                         }
                         else{
-                           // view.showError();
+                            view.showError("User tidak ditemukan");
                         }
                     }
                 });

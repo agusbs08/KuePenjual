@@ -47,6 +47,14 @@
             app:layout_constraintTop_toTopOf="@+id/view2"
             tools:ignore="HardcodedText"/>
 
+        <ProgressBar
+            android:id="@+id/pb_edit_profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            app:layout_constraintBottom_toTopOf="@+id/ib_photoitem_tambah"
+            />
+
         <ImageButton
             android:id="@+id/ib_photoitem_tambah"
             android:layout_width="match_parent"
@@ -55,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/pb_edit_profil" />
 
         <TextView
             android:id="@+id/tv_1"

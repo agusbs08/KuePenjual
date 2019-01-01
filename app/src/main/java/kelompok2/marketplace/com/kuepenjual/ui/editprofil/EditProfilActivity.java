@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -26,6 +27,7 @@ import java.io.FileOutputStream;
 import kelompok2.marketplace.com.kuepenjual.R;
 import kelompok2.marketplace.com.kuepenjual.common.UserState;
 import kelompok2.marketplace.com.kuepenjual.ui.home.HomeActivity;
+import kelompok2.marketplace.com.kuepenjual.util.FormHelper;
 
 public class EditProfilActivity extends AppCompatActivity implements EditProfilView {
 
@@ -36,6 +38,7 @@ public class EditProfilActivity extends AppCompatActivity implements EditProfilV
     private EditText namaToko;
     private EditText alamatPemilik;
     private Button btnSimpan;
+    private ProgressBar pb;
 
     private int bitmap_size = 40; // image quality 1 - 100;
     private int max_resolution_image = 800;
@@ -48,6 +51,7 @@ public class EditProfilActivity extends AppCompatActivity implements EditProfilV
         setContentView(R.layout.edit_profile);
         initView();
         initData();
+        hideLoading();
     }
 
     private void initView(){
@@ -59,6 +63,7 @@ public class EditProfilActivity extends AppCompatActivity implements EditProfilV
         alamatPemilik = findViewById(R.id.et_alamat_editprofile);
         btnSimpan = findViewById(R.id.btn_simpan_editprofile);
         presenter = new EditProfilPresenter(this);
+        pb = findViewById(R.id.pb_edit_profil);
         initBtn();
     }
 
@@ -100,8 +105,12 @@ public class EditProfilActivity extends AppCompatActivity implements EditProfilV
                String email = emailPemilik.getText().toString();
                String notlp = nomerPemilik.getText().toString();
                String alamat = alamatPemilik.getText().toString();
-                Toast.makeText(getApplicationContext(), namaUser + namatoko, Toast.LENGTH_SHORT).show();
-               presenter.updateUser(namaUser, namatoko, email, notlp, alamat, createImageFile());
+               if(!FormHelper.checkUsername(namaUser)){
+                   Toast.makeText(getApplicationContext(), "Isi username sesuai format", Toast.LENGTH_SHORT).show();
+               }
+               else{
+                   presenter.updateUser(namaUser, namatoko, email, notlp, alamat, createImageFile());
+               }
             }
         });
 
@@ -185,5 +194,20 @@ public class EditProfilActivity extends AppCompatActivity implements EditProfilV
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.putExtra("state", 3);
         startActivity(intent);
+    }
+
+    @Override
+    public void showLoading() {
+        pb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        pb.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

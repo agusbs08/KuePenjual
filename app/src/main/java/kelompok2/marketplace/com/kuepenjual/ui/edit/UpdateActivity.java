@@ -99,16 +99,18 @@ public class UpdateActivity extends AppCompatActivity implements UpdateView{
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama = namaBarang.getText().toString();
-                Float harga = Float.parseFloat(hargaBarang.getText().toString());
+                try{
+                    String nama = namaBarang.getText().toString();
+                    Float harga = Float.parseFloat(hargaBarang.getText().toString());
 
-                Float stok = Float.parseFloat(stokBarang.getText().toString());
-                Float diskon = Float.parseFloat(diskonBarang.getText().toString());
-                String merk = merkBarang.getText().toString();
-               // byte[] image = createImageFile();
-                File image = createImageFile();
-                Toast.makeText(getApplicationContext(), nama, Toast.LENGTH_SHORT).show();
-                presenter.updateBarang(nama,harga.intValue(),diskon.intValue(),stok.intValue(),merk,image, barang.getId());
+                    Float stok = Float.parseFloat(stokBarang.getText().toString());
+                    Float diskon = Float.parseFloat(diskonBarang.getText().toString());
+                    String merk = merkBarang.getText().toString();
+                    File image = createImageFile();
+                    presenter.updateBarang(nama,harga.intValue(),diskon.intValue(),stok.intValue(),merk,image, barang.getId());
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Isi Field sesuai format", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

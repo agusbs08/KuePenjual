@@ -85,13 +85,18 @@ public class TambahBarangFragment extends Fragment implements TambahBarangView{
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama = namaBarang.getText().toString();
-                Integer harga = Integer.parseInt(hargaBarang.getText().toString());
-                Integer stok = Integer.parseInt(stokBarang.getText().toString());
-                Integer diskon = Integer.parseInt(diskonBarang.getText().toString());
-                String merk = merkBarang.getText().toString();
-                byte[] image = createImageFile();
-                presenter.createBarang(nama,harga,diskon,stok,merk,image);
+                try{
+                    Integer harga = Integer.parseInt(hargaBarang.getText().toString());
+                    Integer stok = Integer.parseInt(stokBarang.getText().toString());
+                    Integer diskon = Integer.parseInt(diskonBarang.getText().toString());
+                    String nama = namaBarang.getText().toString();
+                    String merk = merkBarang.getText().toString();
+                    byte[] image = createImageFile();
+                    presenter.createBarang(nama,harga,diskon,stok,merk,image);
+                }
+                catch (Exception e){
+                    showError("Isi field sesuai format");
+                }
 
             }
         });
@@ -171,6 +176,11 @@ public class TambahBarangFragment extends Fragment implements TambahBarangView{
     @Override
     public void actionCreateSuccess() {
         Toast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

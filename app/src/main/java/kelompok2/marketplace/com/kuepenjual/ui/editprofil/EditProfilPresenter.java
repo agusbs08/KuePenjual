@@ -26,7 +26,7 @@ public class EditProfilPresenter extends BasePresenterNetwork{
     }
 
     public void updateUser(String namaUser, String namaToko, String email, String notlp, String alamat, File image){
-
+        view.showLoading();
         RequestBody reqMethod = RequestBody.create(MultipartBody.FORM, this.method);
         RequestBody reqPassword = RequestBody.create(MultipartBody.FORM, UserState.getInstance().getPenjual().getPassword());
         RequestBody reqKelamin = RequestBody.create(MultipartBody.FORM, UserState.getInstance().getPenjual().getJenisKelamin());
@@ -42,6 +42,7 @@ public class EditProfilPresenter extends BasePresenterNetwork{
         result.enqueue(new Callback<ModelResponse<Penjual>>() {
             @Override
             public void onResponse(Call<ModelResponse<Penjual>> call, Response<ModelResponse<Penjual>> response) {
+                view.hideLoading();
                 if(response.isSuccessful()){
                     Penjual penjual = response.body().getModel();
                     UserState.getInstance().setPenjual(penjual);
@@ -50,12 +51,15 @@ public class EditProfilPresenter extends BasePresenterNetwork{
                 }
                 else{
                     Log.d(TAG, response.message() + " r");
+                    view.showError("User tidak ditemukan");
                 }
             }
 
             @Override
             public void onFailure(Call<ModelResponse<Penjual>> call, Throwable t) {
+                view.hideLoading();
                 Log.d(TAG, t.getMessage() + " f");
+                view.showError("User tidak ditemukan");
             }
         });
     }
