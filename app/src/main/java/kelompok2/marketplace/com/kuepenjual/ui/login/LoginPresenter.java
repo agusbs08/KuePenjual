@@ -70,12 +70,28 @@ public class LoginPresenter extends BasePresenterNetwork{
             @Override
             public void onFailure(Call<ModelResponse<Penjual>> call, Throwable t) {
                 view.hideLoading();
+                view.showError("User tidak ditemukan");
             }
         });
     }
 
     public void checkUserFromEmail(String email){
+        view.showLoading();
+        result = service.getUserFromEmail(email);
 
+        result.enqueue(new Callback<ModelResponse<Penjual>>() {
+            @Override
+            public void onResponse(Call<ModelResponse<Penjual>> call, Response<ModelResponse<Penjual>> response) {
+                view.hideLoading();
+                view.actionLoginSuccess(response.body().getModel());
+            }
+
+            @Override
+            public void onFailure(Call<ModelResponse<Penjual>> call, Throwable t) {
+                view.hideLoading();
+                view.showError("User tidak ditemukan");
+            }
+        });
     }
 }
 
